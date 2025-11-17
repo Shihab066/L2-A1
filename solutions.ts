@@ -54,3 +54,20 @@ interface User {
 const filterActiveUsers = (users: User[]): User[] => {
   return users.filter((user) => user.isActive);
 };
+
+interface Book {
+  title: string;
+  author: string;
+  publishedYear: number;
+  isAvailable: boolean;
+}
+
+const printBookDetails = (book: Book) => {
+  const { title, author, publishedYear, isAvailable } = book;
+
+  console.log(
+    `Title: ${title}, Author: ${author}, Published: ${publishedYear}, Available: ${
+      isAvailable ? "Yes" : "No"
+    }`
+  );
+};
