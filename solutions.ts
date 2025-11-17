@@ -71,3 +71,28 @@ const printBookDetails = (book: Book) => {
     }`
   );
 };
+
+type TArray = string[] | number[];
+
+const getUniqueValues = (array1: TArray, array2: TArray): TArray => {
+  const uniqueArray: TArray = [];
+
+  const uniqueLookUpObj: Record<string, string | number> = {};
+
+  for (let i of array1) {
+    if (!uniqueLookUpObj[i]) {
+      uniqueLookUpObj[i] = i;
+      uniqueArray[uniqueArray.length] = i;
+    }
+  }
+
+  for (let j of array2) {
+    if (!uniqueLookUpObj[j]) {
+      uniqueLookUpObj[j] = j;
+      uniqueArray[uniqueArray.length] = j;
+    }
+  }
+
+  return uniqueArray;
+};
+
