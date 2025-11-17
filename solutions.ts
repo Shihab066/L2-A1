@@ -34,3 +34,12 @@ class Person {
     return `'Name: ${this.name}, Age: ${this.age}'`;
   }
 }
+
+interface Item {
+  title: string;
+  rating: number;
+}
+
+const filterByRating = (items: Item[]): Item[] => {
+  return items.filter((item) => item.rating > 4 && item.rating <= 5);
+};
