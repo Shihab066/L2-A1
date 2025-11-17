@@ -77,22 +77,21 @@ type TArray = string[] | number[];
 const getUniqueValues = (array1: TArray, array2: TArray): TArray => {
   const uniqueArray: TArray = [];
 
-  const uniqueLookUpObj: Record<string, string | number> = {};
+  const uniqueLookUpObj: Record<string, boolean> = {};
 
   for (let i of array1) {
     if (!uniqueLookUpObj[i]) {
-      uniqueLookUpObj[i] = i;
+      uniqueLookUpObj[i] = true;
       uniqueArray[uniqueArray.length] = i;
     }
   }
 
   for (let j of array2) {
     if (!uniqueLookUpObj[j]) {
-      uniqueLookUpObj[j] = j;
+      uniqueLookUpObj[j] = true;
       uniqueArray[uniqueArray.length] = j;
     }
   }
 
   return uniqueArray;
 };
-
