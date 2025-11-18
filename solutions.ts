@@ -95,3 +95,30 @@ const getUniqueValues = (array1: TArray, array2: TArray): TArray => {
 
   return uniqueArray;
 };
+
+interface Products {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+}
+
+const calculateTotalPrice = (products: Products[]): number => {
+  const totalProductsPrice = products.reduce((totalPrice, currentProduct) => {
+    const price = currentProduct.price * currentProduct.quantity;
+
+    if (
+      currentProduct.discount &&
+      currentProduct.discount > 0 &&
+      currentProduct.discount <= 100
+    ) {
+      const discount = price * (currentProduct.discount / 100);
+      const priceAfterDiscount = price - discount;
+      return priceAfterDiscount + totalPrice;
+    }
+
+    return totalPrice + price;
+  }, 0);
+
+  return totalProductsPrice;
+};
